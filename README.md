@@ -1,14 +1,14 @@
 # Sandaru Suranjaya - Personal Portfolio
 
-A modern, responsive personal portfolio website built with React, Vite, and Tailwind CSS. Inspired by Apple's minimalist design philosophy.
+A modern, responsive personal portfolio website built with pure HTML, CSS, and JavaScript. Features a clean, Apple-inspired minimalist design.
 
 ## 🚀 Features
 
 - **Modern Design**: Clean, professional layout with Apple-inspired aesthetics
 - **Responsive**: Fully responsive design that works on all devices
-- **Fast Performance**: Built with Vite for optimal loading speeds
+- **Fast Performance**: Pure HTML/CSS/JS for optimal loading speeds
 - **SEO Optimized**: Proper meta tags and semantic HTML
-- **Smooth Animations**: Hover effects and transitions for enhanced UX
+- **Smooth Animations**: Hover effects and scroll animations for enhanced UX
 
 ## 📋 Sections
 
@@ -22,95 +22,58 @@ A modern, responsive personal portfolio website built with React, Vite, and Tail
 
 ## 🛠️ Tech Stack
 
-- **React 19**: Latest React with modern hooks and features
-- **Vite**: Fast build tool and development server
-- **Tailwind CSS**: Utility-first CSS framework
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with Flexbox and Grid
+- **JavaScript**: Smooth scrolling and animations
 - **GitHub Pages**: Hosting and deployment
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
+- A modern web browser
+- Git (for deployment)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sandaruk93/sandaru-portfolio.git
-cd sandaru-portfolio
+git clone https://github.com/sandaruk93/sandaruk93.github.io.git
+cd sandaru.github.io
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start development server:
-```bash
-npm run dev
-```
-
-4. Build for production:
-```bash
-npm run build
-```
+2. Open `index.html` in your browser to view locally
 
 ## 📦 Deployment
 
-The website is configured for GitHub Pages deployment:
-
-1. Push to GitHub:
-```bash
-git push origin main
-```
-
-2. Deploy to GitHub Pages:
-```bash
-npm run deploy
-```
-
-The website will be available at: `https://sandaruk93.github.io/sandaru-portfolio/`
+The website is automatically deployed on GitHub Pages and available at:
+**https://sandaruk93.github.io**
 
 ## 📁 Project Structure
 
 ```
-sandaru-portfolio/
-├── public/
+sandaru.github.io/
+├── index.html          # Main portfolio page
+├── public/             # Static assets
 │   └── SandaruSuranjaya-CV.pdf
-├── src/
-│   ├── components/
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Experience.jsx
-│   │   ├── Contact.jsx
-│   │   └── Footer.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── index.html
-├── vite.config.js
-├── tailwind.config.js
-└── package.json
+├── assets/             # Built assets (if any)
+├── .gitignore          # Git ignore rules
+└── README.md           # This file
 ```
 
 ## 🎨 Customization
 
 ### Colors
-The color scheme is defined in `tailwind.config.js`:
+The color scheme uses:
 - Charcoal: `#333333`
 - Navy: `#1e3a8a`
 - Electric Blue: `#3b82f6`
 
 ### Fonts
 - Primary: Inter (Google Fonts)
-- Fallback: Open Sans
 
 ### Content
-Update the content in each component file to match your personal information, projects, and experience.
+Update the content in `index.html` to match your personal information, projects, and experience.
 
 ## 📄 License
 
@@ -123,4 +86,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-Built with ❤️ using React, Vite, and Tailwind CSS 
+Built with ❤️ using HTML, CSS, and JavaScript 
