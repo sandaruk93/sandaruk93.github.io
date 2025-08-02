@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23000'/><g fill='%23fff'><rect x='25' y='35' width='50' height='30' rx='15'/><g fill='%23333'><rect x='30' y='40' width='8' height='20' transform='rotate(45 34 50)'/><rect x='62' y='40' width='8' height='20' transform='rotate(-45 66 50)'/></g></g><g fill='%23333'><path d='M20 25 L35 35 L35 25 Z'/><path d='M65 25 L80 35 L80 25 Z'/><path d='M20 75 L35 65 L35 75 Z'/><path d='M65 75 L80 65 L80 75 Z'/></g></svg>">
     <style>
         * {
             margin: 0;
@@ -30,6 +31,19 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
+        }
+
+        /* Logo Styles */
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            display: block;
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
         }
 
         /* Hero Section */
@@ -570,6 +584,11 @@
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -592,6 +611,11 @@
             .project-card {
                 margin: 0 -20px;
                 border-radius: 8px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -635,6 +659,24 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <rect width="100" height="100" fill="#000"/>
+                        <g fill="#fff">
+                            <rect x="25" y="35" width="50" height="30" rx="15"/>
+                            <g fill="#333">
+                                <rect x="30" y="40" width="8" height="20" transform="rotate(45 34 50)"/>
+                                <rect x="62" y="40" width="8" height="20" transform="rotate(-45 66 50)"/>
+                            </g>
+                        </g>
+                        <g fill="#333">
+                            <path d="M20 25 L35 35 L35 25 Z"/>
+                            <path d="M65 25 L80 35 L80 25 Z"/>
+                            <path d="M20 75 L35 65 L35 75 Z"/>
+                            <path d="M65 75 L80 65 L80 75 Z"/>
+                        </g>
+                    </svg>
+                </div>
                 <h1>Sandaru Suranjaya</h1>
                 <p class="tagline">Product Strategist. Growth-Driven Leader. Builder of High-Impact Experiences.</p>
                 <p class="subtext">I design and lead products that inspire engagement, form habits, and scale with impact. From AI-powered tools to award-winning mobile apps, I've built across industries — always placing the user and measurable outcomes at the core.</p>
