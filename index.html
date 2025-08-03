@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
+    
     <title>Sandaru Suranjaya - Senior Product Manager</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -669,7 +680,7 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="public/CV-SandaruSuranjaya.pdf" class="btn btn-secondary" target="_blank">Download My CV</a>
-                    <a href="https://medium.com/@sandaru.space" class="btn btn-secondary" target="_blank">Blogs</a>
+                    <a href="https://medium.com/@sandaru.space" class="btn btn-secondary" target="_blank">Read My Blog</a>
                 </div>
             </div>
         </div>
@@ -914,6 +925,19 @@
     </footer>
 
     <script>
+        // Security: Enforce HTTPS
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace(`https:${location.href.substring(location.protocol.length)}`);
+        }
+
+        // Security: Secure external links
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            if (link.hostname !== window.location.hostname) {
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.setAttribute('target', '_blank');
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

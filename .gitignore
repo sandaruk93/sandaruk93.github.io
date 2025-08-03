@@ -19,4 +19,25 @@ Thumbs.db
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+# Security files
+.env
+.env.local
+.env.production
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo 
