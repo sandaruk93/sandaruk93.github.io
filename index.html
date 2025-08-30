@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+    
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
+    
+    <title>Sandaru Suranjaya - Senior Product Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 3rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+            color: #1a1a1a;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+            color: #1a1a1a;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #1a1a1a;
+            border-radius: 1px;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            width: 100%;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Add padding to body to account for fixed nav */
+        body {
+            padding-top: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Logo Styles */
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Profile Photo Styles */
+        .profile-photo {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 3.5rem;
+            display: block;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #f0f0f0;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.18);
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #1a1a1a;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+        }
+
+        .hero-content .tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #666666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .hero-content .subtext {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #888888;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 0 12px;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        .btn-primary:hover {
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a1a1a;
+            border-color: #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f8f8;
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666666;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888888;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.8rem 0;
+            color: #666666;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            border-bottom: 1px solid #f8f8f8;
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-card li::before {
+            content: "•";
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: #fafafa;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .project-header h3 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .project-header .challenge {
+            font-size: 0.9rem;
+            color: #888888;
+            line-height: 1.5;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-section h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-section p {
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .impact-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .impact-list li {
+            padding: 0.4rem 0;
+            color: #666666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .impact-list li::before {
+            content: "✓";
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #e0e0e0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 100px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 45px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #e0e0e0;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-company {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .timeline-period {
+            color: #888888;
+            font-weight: 400;
+            font-size: 0.9rem;
+            background: #f8f8f8;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+        }
+
+        .timeline-role {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #666666;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: #888888;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .achievements-list {
+            list-style: none;
+        }
+
+        .achievements-list li {
+            padding: 0.6rem 0;
+            color: #666666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .achievements-list li::before {
+            content: "•";
+            color: #1a1a1a;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: #666666;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .contact-btn.email {
+            background: #1a1a1a;
+            color: white;
+            border-color: #1a1a1a;
+        }
+
+        .contact-btn.email:hover {
+            background: #333333;
+            border-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.linkedin {
+            background: transparent;
+            color: #1a1a1a;
+            border-color: #e0e0e0;
+        }
+
+        .contact-btn.linkedin:hover {
+            background: #f8f8f8;
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #fafafa;
+            color: #888888;
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer .heart {
+            color: #ff6b6b;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                justify-content: space-between;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+
+            .nav-link.active::after {
+                display: none;
+            }
+
+            .nav-link.active {
+                background: rgba(0, 0, 0, 0.05);
+                font-weight: 600;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-dot {
+                left: 25px;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                margin: 0.5rem 0;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-photo {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-link {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                margin: 0 -20px;
+                border-radius: 8px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .profile-photo {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#hero" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-photo">
+                    <img src="profile-photo.jpg" alt="Sandaru Suranjaya - Senior Product Manager" />
+                </div>
+                <h1>Sandaru Suranjaya</h1>
+                <p class="tagline"> Product Leader Driving Engagement & Growth Through Exceptional Experiences. </p>
+                <p class="subtext">I design and lead products that inspire engagement, form habits, and scale with impact. From AI-powered tools to award-winning mobile apps, I've built across industries — always placing the user and measurable outcomes at the core.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="public/CV-SandaruSuranjaya.pdf" class="btn btn-secondary" target="_blank">Download My CV</a>
+                    <a href="https://medium.com/@sandaru.space" class="btn btn-secondary" target="_blank">Read My Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="about-content">
+                <p class="fade-in">I'm Sandaru Suranjaya, a Senior Product Manager with over 7 years of experience crafting digital experiences that drive engagement, retention, and revenue. I thrive at the intersection of strategy, data, and storytelling — whether it's launching a gamified meditation experience for 300K+ users at Mindvalley or pioneering South Asia's tallest humanoid robot with Arimac.</p>
+                <p class="fade-in">I bring a rare blend of technical fluency, user empathy, and business acumen. Backed by an MSc in Business Analytics, I align cross-functional teams around bold product visions and execute them with agility.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">300K+</div>
+                        <div class="stat-label">Users Impacted</div>
+                    </div>
+                    <div class="stat-card fade-in">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Award-Winning Products/Projects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card slide-in-left">
+                    <h3>🏹 Product Strategy & Execution</h3>
+                    <ul>
+                        <li>Product Vision & Roadmapping</li>
+                        <li>Go-To-Market Planning</li>
+                        <li>Agile Product Lifecycle</li>
+                        <li>0→1 Product Development</li>
+                    </ul>
+                </div>
+                <div class="skill-card slide-in-left">
+                    <h3>📈 Data & Growth</h3>
+                    <ul>
+                        <li>A/B Testing & Experimentation</li>
+                        <li>Engagement & Retention Analytics (Amplitude, Mixpanel)</li>
+                        <li>Data-Informed UX Optimization</li>
+                        <li>Funnel & Cohort Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-card slide-in-left">
+                    <h3>🧭 Leadership & Communication</h3>
+                    <ul>
+                        <li>Executive Stakeholder Alignment</li>
+                        <li>Public Speaking & Facilitation</li>
+                        <li>Developer Relations & Community Building</li>
+                        <li>Cross-Functional Team Building</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card slide-in-left">
+                    <div class="project-header">
+                        <h3>Gamifying Mindvalley</h3>
+                        <div class="challenge">Challenge: User engagement with meditation content had plateaued, impacting retention metrics.</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>🎯 What I Did</h4>
+                            <p>Conceptualized and launched gamification features — including meditation streaks, daily targets, and achievement badges — to foster habit formation.</p>
+                        </div>
+                        <div class="project-section">
+                            <h4>📊 Impact</h4>
+                            <ul class="impact-list">
+                                <li>📈 +115% increase in weekly engagement</li>
+                                <li>📆 +27% boost in repeat meditation sessions</li>
+                                <li>⚡ Recognized internally as a culture-shifting product improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card slide-in-right">
+                    <div class="project-header">
+                        <h3>Mindvalley NextGen iOS App</h3>
+                        <div class="challenge">Challenge: User complaints about discoverability, outdated UI, and friction in content access.</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>🎯 What I Did</h4>
+                            <p>Led the redesign and launch of a new iOS app in just 4 weeks — improving navigation, simplifying the player UI, and adding gamified dashboards.</p>
+                        </div>
+                        <div class="project-section">
+                            <h4>📊 Impact</h4>
+                            <ul class="impact-list">
+                                <li>📱 App was selected by Apple to be featured on iPhone 16 demo devices globally</li>
+                                <li>🏆 Won Technology Excellence Award (Asian Business Review, 2025)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card slide-in-left">
+                    <div class="project-header">
+                        <h3>Social Reach (COVID-19 Response Tool)</h3>
+                        <div class="challenge">Challenge: Combat misinformation during Sri Lanka's COVID-19 crisis.</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>🎯 What I Did</h4>
+                            <p>Built a social listening platform leveraging NLP and sentiment analysis to detect viral misinformation, in partnership with the Sri Lankan Government.</p>
+                        </div>
+                        <div class="project-section">
+                            <h4>📊 Impact</h4>
+                            <ul class="impact-list">
+                                <li>🛡️ Used in national pandemic response</li>
+                                <li>🤝 Set a benchmark for data-driven governance tools</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card slide-in-right">
+                    <div class="project-header">
+                        <h3>IMI Games: EdTech Meets Gaming</h3>
+                        <div class="challenge">Challenge: Launch an educational gaming platform from scratch with regional partnerships.</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <h4>🎯 What I Did</h4>
+                            <p>Led product development, roadmap, and go-to-market in collaboration with brands like Unilever and Etihad.</p>
+                        </div>
+                        <div class="project-section">
+                            <h4>📊 Impact</h4>
+                            <ul class="impact-list">
+                                <li>🕹️ 100K+ active users within first year</li>
+                                <li>🏅 Awarded Silver at NBQSA 2021 for product innovation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item slide-in-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-company">Mindvalley</div>
+                            <div class="timeline-period">2023–Present</div>
+                        </div>
+                        <div class="timeline-role">Senior Product Manager</div>
+                        <div class="timeline-description">Own the vision, strategy, and execution for key engagement features of a global personal growth platform serving 300K+ subscribers.</div>
+                        <ul class="achievements-list">
+                            <li>🚀 Increased weekly content engagement by 115% through gamification</li>
+                            <li>🧠 Delivered offline meditation experience — improved retention</li>
+                            <li>🏆 App recognized by Apple and awarded regionally for innovation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-in-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-company">Arimac</div>
+                            <div class="timeline-period">2020–2022</div>
+                        </div>
+                        <div class="timeline-role">Senior Product Manager</div>
+                        <div class="timeline-description">Led cross-functional product squads building EdTech platforms, hyper-casual games, and AI-driven national tools.</div>
+                        <ul class="achievements-list">
+                            <li>🕹️ Launched IMI Games with 30K+ DAUs, scaled to 100K+ active users</li>
+                            <li>🤖 Spearheaded South Asia's tallest humanoid robot project — "Diyazen"</li>
+                            <li>🔍 Built Social Reach misinformation monitoring tool for COVID-19 response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-in-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-company">Dialog Axiata</div>
+                            <div class="timeline-period">2018–2020</div>
+                        </div>
+                        <div class="timeline-role">Product Evangelist</div>
+                        <div class="timeline-description">Championed B2B telco APIs across South & Southeast Asia.</div>
+                        <ul class="achievements-list">
+                            <li>🌏 Ran 10+ hackathons in 4 countries</li>
+                            <li>🛠️ Led cross-border API storefront integrations with Smart Axiata</li>
+                            <li>🎤 Drove developer community engagement and training programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Let's Connect</h2>
+            <div class="contact-content">
+                <p class="fade-in">Let's collaborate, speak, or build together.</p>
+                <div class="contact-buttons">
+                    <a href="mailto:sandaru.suranjaya@gmail.com" class="contact-btn email">
+                        📧 sandaru.suranjaya@gmail.com
+                    </a>
+                    <a href="https://linkedin.com/in/sandaru-suranjaya" class="contact-btn linkedin" target="_blank">
+                        🔗 LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Sandaru Suranjaya. All rights reserved.</p>
+                <p>Built with <span class="heart">💙</span> for simplicity, speed, and storytelling.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Security: Enforce HTTPS
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace(`https:${location.href.substring(location.protocol.length)}`);
+        }
+
+        // Security: Secure external links
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            if (link.hostname !== window.location.hostname) {
+                link.setAttribute('rel', 'noopener noreferrer');
+                link.setAttribute('target', '_blank');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveNav() {
+            let current = '';
+            const scrollPos = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', updateActiveNav);
+        
+        // Initial call to set active nav
+        updateActiveNav();
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenuBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Security: Disallow access to sensitive files
+Disallow: /.git/
+Disallow: /README.md
+Disallow: /.gitignore
+
+# Security: Prevent access to any potential admin or config files
+Disallow: /admin/
+Disallow: /config/
+Disallow: /backup/
+Disallow: /temp/
+
+# Crawl-delay to prevent aggressive crawling
+Crawl-delay: 1
+
+# Sitemap (if you create one later)
+# Sitemap: https://sandaru.me/sitemap.xml 
