@@ -45,7 +45,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -104,6 +104,24 @@
             height: 2px;
             background: #1a1a1a;
             border-radius: 1px;
+        }
+
+        /* Navigation separator */
+        .nav-separator {
+            width: 1px;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 0 1rem;
+        }
+
+        /* Blog link styling */
+        .nav-link.blog {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .nav-link.blog:hover {
+            color: #5a67d8;
         }
 
         /* Mobile Menu Button */
@@ -358,39 +376,77 @@
         }
 
         .skill-card {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
             padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid #f0f0f0;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
         }
 
         .skill-card h3 {
-            font-size: 1.4rem;
-            font-weight: 500;
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1.5rem;
             color: #1a1a1a;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .skill-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
 
         .skill-card ul {
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .skill-card li {
-            padding: 0.8rem 0;
-            color: #666666;
+            padding: 1rem 0;
+            color: #555555;
             display: flex;
             align-items: center;
             font-size: 1rem;
-            border-bottom: 1px solid #f8f8f8;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            position: relative;
         }
 
         .skill-card li:last-child {
@@ -398,11 +454,23 @@
         }
 
         .skill-card li::before {
-            content: "•";
-            color: #1a1a1a;
+            content: "✓";
+            color: #667eea;
             font-weight: bold;
             margin-right: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+        }
+
+        .skill-card li:hover {
+            color: #1a1a1a;
+            padding-left: 0.5rem;
+        }
+
+        .skill-card li:hover::before {
+            opacity: 1;
+            transform: scale(1.1);
         }
 
         /* Projects Section */
@@ -735,6 +803,15 @@
                 font-weight: 600;
             }
 
+            .nav-separator {
+                display: none;
+            }
+
+            .nav-link.blog {
+                color: #667eea;
+                font-weight: 600;
+            }
+
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -749,6 +826,15 @@
 
             .skills-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-card {
+                padding: 2rem;
+            }
+
+            .skill-card:hover {
+                transform: translateY(-4px) scale(1.01);
             }
 
             .projects-grid {
@@ -898,6 +984,13 @@
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
+                <li class="nav-separator"></li>
+                <li class="nav-item">
+                    <a href="https://sandaru.myportfolio.com/" class="nav-link blog" target="_blank" rel="noopener noreferrer">Photography</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://medium.com/@sandaru.space" class="nav-link blog" target="_blank" rel="noopener noreferrer">Blog</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -915,7 +1008,6 @@
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">Featured</a>
                     <a href="public/CV-SandaruSuranjaya.pdf" class="btn btn-secondary" target="_blank">Curriculum Vitae</a>
-                    <a href="https://medium.com/@sandaru.space" class="btn btn-secondary" target="_blank">Blog</a>
                 </div>
             </div>
         </div>
@@ -928,7 +1020,7 @@
             <div class="about-content">
                 <p class="fade-in">I'm Sandaru Suranjaya, a Senior Product Manager with over 7 years of experience turning bold ideas into digital products that people love to use. I work at the crossroads of strategy, design, and AI, building intuitive experiences that drive engagement, retention, and revenue.</p>
                 <p class="fade-in">At Mindvalley, I led the gamification of meditations, boosting engagement by 115%, and redesigned the iOS app that's now preloaded on Apple demo devices worldwide. Before that, at Arimac, I helped pioneer South Asia's tallest humanoid robot and scaled gaming products to 100K daily active users. My journey began at Dialog Axiata, where I grew South Asia's largest telco API ecosystem.</p>
-                <p class="fade-in">With an MSc in Business Analytics and hands-on fluency in prototyping and AI (LLMs, NLP), I bring a unique blend of technical depth, user empathy, and business acumen. Whether it's building award-winning apps, experimenting with generative AI, or aligning teams around a shared vision, I thrive on creating products that make a real impact.</p>
+                <p class="fade-in">With an MSc in Business Analytics and hands-on fluency in prototyping and AI (LLMs, NLP), I bring a unique blend of technical depth, user empathy, and business acumen. Whether it's building award-winning apps, prototyping with generative AI, or driving teams around a shared vision, I thrive on creating products that make a real impact.</p>
                 
                 <div class="about-stats">
                     <div class="stat-card fade-in">
@@ -954,7 +1046,7 @@
             <h2 class="section-title fade-in">Skills & Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-card slide-in-left">
-                    <h3>🏹 Product Strategy & Execution</h3>
+                    <h3>Product Strategy & Execution</h3>
                     <ul>
                         <li>Product Vision & Roadmapping</li>
                         <li>Go-To-Market Planning</li>
@@ -963,7 +1055,7 @@
                     </ul>
                 </div>
                 <div class="skill-card slide-in-left">
-                    <h3>📈 Data & Growth</h3>
+                    <h3>Data & Growth</h3>
                     <ul>
                         <li>A/B Testing & Experimentation</li>
                         <li>Engagement & Retention Analytics (Amplitude, Mixpanel)</li>
@@ -972,7 +1064,7 @@
                     </ul>
                 </div>
                 <div class="skill-card slide-in-left">
-                    <h3>🧭 Leadership & Communication</h3>
+                    <h3>Leadership & Communication</h3>
                     <ul>
                         <li>Executive Stakeholder Alignment</li>
                         <li>Public Speaking & Facilitation</li>
