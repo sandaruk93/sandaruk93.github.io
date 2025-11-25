@@ -5,11 +5,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 1000px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    color: #333333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #000000;
     text-decoration: none;
     font-weight: 400;
     font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -19,8 +19,7 @@
 }
 
 .button:hover {
-    opacity: 0.9;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {

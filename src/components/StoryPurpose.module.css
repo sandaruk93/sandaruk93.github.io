@@ -3,7 +3,8 @@
     background: #000000;
     display: flex;
     justify-content: center;
-    height: 899px;
+    min-height: 899px;
+    height: auto;
     align-items: center;
     position: relative;
 }
