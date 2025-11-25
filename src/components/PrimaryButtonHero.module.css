@@ -1,0 +1,22 @@
+.button {
+    width: 144px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    background-color: var(--accent-blue);
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    /* Standard iOS body size */
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+}

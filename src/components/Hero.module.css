@@ -1,0 +1,61 @@
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-l);
+    background: radial-gradient(circle at 50% 50%, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    position: relative;
+}
+
+.title {
+    font-size: 104px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-m);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: var(--space-m);
+    margin-top: var(--space-xl);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.125rem;
+    }
+}

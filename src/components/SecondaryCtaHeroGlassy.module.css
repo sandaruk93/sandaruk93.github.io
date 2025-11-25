@@ -1,0 +1,46 @@
+.button {
+    width: 155px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1000px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: #333333;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.button:hover {
+    opacity: 0.9;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+    .button {
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+
+    .button:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
+[data-theme='dark'] .button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+[data-theme='dark'] .button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
