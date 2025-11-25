@@ -14,8 +14,16 @@
 .carousel {
     display: flex;
     width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
     position: relative;
+    scrollbar-width: none;
+    /* Firefox */
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
 }
 
 .track {

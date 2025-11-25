@@ -17,20 +17,7 @@
     flex-wrap: wrap;
 }
 
-.link {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
-    padding: var(--space-s) var(--space-m);
-    border: 1px solid var(--divider);
-    border-radius: 999px;
-}
 
-.link:hover {
-    color: var(--text-primary);
-    border-color: var(--text-primary);
-    background: var(--bg-secondary);
-}
 
 @media (max-width: 768px) {
     .links {
