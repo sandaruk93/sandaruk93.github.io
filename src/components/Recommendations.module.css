@@ -23,9 +23,6 @@
     scrollbar-width: none;
     /* Firefox */
     justify-content: center;
-    /* center cards horizontally */
-    align-items: center;
-    /* vertically align within container */
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -93,23 +90,26 @@
 }
 
 @media (max-width: 768px) {
-    .scrollContainer {
-        flex-direction: column;
-        overflow: visible;
-        align-items: stretch;
-    }
-
     .card {
-        flex: 0 0 100%;
-        max-width: none;
+        flex: 0 0 85vw;
+        max-width: 350px;
+        min-height: 400px;
         height: auto;
-        margin-bottom: var(--space-m);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .card {
+        flex: 0 0 45%;
+        max-width: 400px;
+        height: 450px;
     }
 }
 
 @media (min-width: 1024px) {
     .card {
         flex: 0 0 30%;
-        /* show up to three cards per row on large screens */
+        max-width: 350px;
+        height: 450px;
     }
 }
