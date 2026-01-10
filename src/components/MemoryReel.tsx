@@ -77,10 +77,22 @@ export default function MemoryReel() {
         const card = cards[index] as HTMLElement;
 
         if (card) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            // We don't manually set activeIndex here because the scroll event will trigger handleScroll
-            // However, for auto-play, we might want to ensure it updates immediately or rely on scroll
-            // Relying on scroll is safer for synchronization.
+            // Calculate position to center the card
+            // We use the card's offsetLeft relative to the container (since container is relative)
+            // However, we need to account for the container's scroll position if using getBoundingClientRect
+            // But since we want to SET scrollLeft, using offsetLeft is cleaner if offsetParent corrects.
+
+            // safer approach using geometric centers relative to container content
+            const cardLeft = card.offsetLeft;
+            const cardWidth = card.offsetWidth;
+            const containerWidth = container.clientWidth;
+
+            const targetScrollLeft = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+
+            container.scrollTo({
+                left: targetScrollLeft,
+                behavior: 'smooth'
+            });
         }
     };
 
@@ -104,7 +116,7 @@ export default function MemoryReel() {
                                 alt={item.alt}
                                 fill
                                 className={styles.image}
-                                sizes="(max-width: 768px) 85vw, 600px"
+                                sizes="(max-width: 768px) 85vw, 800px"
                             />
                         </div>
                     ))}

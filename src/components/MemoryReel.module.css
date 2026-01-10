@@ -23,15 +23,15 @@
     /* Firefox */
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-    padding: 0 max(calc((100vw - 600px) / 2), var(--space-l));
+    padding: 0 max(calc((100vw - 800px) / 2), var(--space-l));
     /* Center the first item */
 }
 
 /* ... existing styles ... */
 
 .card {
-    width: 600px;
-    height: 400px;
+    width: 800px;
+    height: 500px;
     flex-shrink: 0;
     border-radius: 16px;
     overflow: hidden;
