@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './BehindTheLens.module.css';
 
 const photos = [
@@ -20,7 +21,13 @@ export default function BehindTheLens() {
                 <div className={styles.grid}>
                     {photos.map((photo) => (
                         <div key={photo.id} className={styles.photoCard}>
-                            <img src={photo.src} alt={photo.alt} className={styles.image} />
+                            <Image
+                                src={photo.src}
+                                alt={photo.alt}
+                                fill
+                                className={styles.image}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
                         </div>
                     ))}
                 </div>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Recommendations.module.css';
 
 const recommendations = [
@@ -30,6 +31,12 @@ const recommendations = [
         quote: "Really structured, diplomatic and calm player to get the job done. Coordinates well to has learned the art of getting things delivered without compromising attention to detail.",
         name: "Muhammad Yaseen Farooqui",
         role: "Digital Product Management Consultant - Accenture"
+    },
+    {
+        id: 6,
+        quote: "He’s super smart in manoeuvring discussions or debates – the things that have us going around in circles or lead us nowhere. He drives action. And makes things happen. Which makes a difference",
+        name: "Neal Saldanha",
+        role: "Content Design UX - Du"
     }
 ];
 
@@ -44,7 +51,13 @@ export default function Recommendations() {
                         <div key={rec.id} className={styles.card}>
                             <p className={styles.quote}>"{rec.quote}"</p>
                             <div className={styles.author}>
-                                <img src={avatarSrc} alt={`${rec.name} avatar`} className={styles.avatar} />
+                                <Image
+                                    src={avatarSrc}
+                                    alt={`${rec.name} avatar`}
+                                    width={48}
+                                    height={48}
+                                    className={styles.avatar}
+                                />
                                 <div className={styles.info}>
                                     <span className={styles.name}>{rec.name}</span>
                                     <span className={styles.role}>{rec.role}</span>

@@ -23,7 +23,7 @@
 .link {
     color: var(--accent-blue);
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: color 0.4s ease;
 }
 
 .link:hover {

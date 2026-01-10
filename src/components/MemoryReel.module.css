@@ -2,6 +2,9 @@
     padding: var(--space-xxxl) 0;
     background: var(--bg-secondary);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .heading {
@@ -19,32 +22,22 @@
     scrollbar-width: none;
     /* Firefox */
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0 max(calc((100vw - 600px) / 2), var(--space-l));
+    /* Center the first item */
 }
 
-.carousel::-webkit-scrollbar {
-    display: none;
-    /* Chrome/Safari */
-}
-
-.track {
-    display: flex;
-    gap: var(--space-m);
-    animation: scroll 40s linear infinite;
-    width: max-content;
-}
-
-.track:hover {
-    animation-play-state: paused;
-}
+/* ... existing styles ... */
 
 .card {
-    width: 450px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
     position: relative;
+    scroll-snap-align: center;
 }
 
 .image {
@@ -58,12 +51,65 @@
     transform: scale(1.05);
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
+.paginationContainer {
+    margin-top: var(--space-xl);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 12px;
+    border-radius: 100px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--space-m);
+    width: max-content;
+}
+
+[data-theme='light'] .paginationContainer {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .paginationContainer {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+[data-theme='light'] .dot {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+[data-theme='light'] .dot.active {
+    background-color: black;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 85vw;
+        height: 250px;
     }
 
-    100% {
-        transform: translateX(-50%);
+    .carousel {
+        padding: 0 max(calc((100vw - 85vw) / 2), var(--space-l));
     }
 }
