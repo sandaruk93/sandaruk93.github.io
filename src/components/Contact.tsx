@@ -6,7 +6,7 @@ export default function Contact() {
         <section id="contact" className={styles.section}>
             <h2 className={styles.heading}>Get in Touch</h2>
             <div className={styles.links}>
-                <SecondaryCtaHeroGlassy href="mailto:sandaru.suranjaya@icloud.com">
+                <SecondaryCtaHeroGlassy href="mailto:hello@sandaru.me">
                     Email
                 </SecondaryCtaHeroGlassy>
                 <SecondaryCtaHeroGlassy href="https://www.linkedin.com/in/sandaru-suranjaya/">
