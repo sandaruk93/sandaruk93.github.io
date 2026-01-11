@@ -54,27 +54,7 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-.submitButton {
-    margin-top: var(--space-s);
-    padding: 12px 24px;
-    border-radius: 100px;
-    border: none;
-    background: var(--accent-blue);
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
 
-.submitButton:hover {
-    opacity: 0.9;
-}
-
-.submitButton:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
 
 .successMessage {
     text-align: center;

@@ -4,6 +4,8 @@ import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import styles from './ContactForm.module.css';
 
+import PrimaryButtonHero from './PrimaryButtonHero';
+
 export default function ContactForm() {
     const [state, handleSubmit] = useForm("mnjjayjz");
 
@@ -59,9 +61,11 @@ export default function ContactForm() {
                     <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
 
-                <button type="submit" disabled={state.submitting} className={styles.submitButton}>
-                    Send Message
-                </button>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <PrimaryButtonHero type="submit" disabled={state.submitting}>
+                        Submit
+                    </PrimaryButtonHero>
+                </div>
             </form>
         </div>
     );
