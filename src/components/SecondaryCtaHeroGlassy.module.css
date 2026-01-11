@@ -18,6 +18,13 @@
     transition: opacity 0.2s ease, background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
+.iconMode {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: 50%;
+}
+
 .button:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }

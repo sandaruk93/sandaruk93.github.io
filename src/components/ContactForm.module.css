@@ -1,0 +1,100 @@
+.formContainer {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.submitButton {
+    margin-top: var(--space-s);
+    padding: 12px 24px;
+    border-radius: 100px;
+    border: none;
+    background: var(--accent-blue);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.submitButton:hover {
+    opacity: 0.9;
+}
+
+.submitButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.successMessage {
+    text-align: center;
+    color: var(--accent-green, #34c759);
+    padding: var(--space-l);
+}
+
+[data-theme='dark'] .formContainer {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .input,
+[data-theme='dark'] .textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .input:focus,
+[data-theme='dark'] .textarea:focus {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-blue);
+}
