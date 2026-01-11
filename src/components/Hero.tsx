@@ -20,7 +20,7 @@ export default function Hero() {
                     <PrimaryButtonHero href="#story">
                         Learn more
                     </PrimaryButtonHero>
-                    <SecondaryCtaHeroGlassy href="https://portfolio.sandaru.me/" >
+                    <SecondaryCtaHeroGlassy href="https://photography.sandaru.me/" >
                         Photography
                     </SecondaryCtaHeroGlassy>
                 </div>

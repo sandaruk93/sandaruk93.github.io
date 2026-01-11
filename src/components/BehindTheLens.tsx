@@ -16,7 +16,7 @@ export default function BehindTheLens() {
             <div className={styles.container}>
                 <div className={styles.header}>
                     <h2 className={styles.heading}>Behind the Lens</h2>
-                    <a href="https://portfolio.sandaru.me" target="_blank" rel="noopener noreferrer" className={styles.link}>View Full Portfolio &rarr;</a>
+                    <a href="https://photography.sandaru.me" target="_blank" rel="noopener noreferrer" className={styles.link}>View Full Portfolio &rarr;</a>
                 </div>
                 <div className={styles.grid}>
                     {photos.map((photo) => (
